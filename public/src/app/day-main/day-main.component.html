@@ -1,0 +1,34 @@
+<div class="container">
+    <h3 class="dateSelect">Flight From:</h3>
+    <form>
+        <input name="flightFrom" type="text" [(ngModel)]="flightFrom">
+    </form>
+    <h3 class="dateSelect">Flight To:</h3>
+    <form>
+        <input name="flightTo" type="text" [(ngModel)]="flightTo">
+    </form>
+    <h3 class="dateSelect">Select a date:</h3>
+
+<calendar-header [(view)]="view" [(viewDate)]="viewDate">
+</calendar-header>
+
+<div class="alert alert-info">
+    <strong *ngIf="clickedDate"
+    >You clicked on this time: {{ clickedDate | date:'medium' }}</strong>
+</div>
+
+<div [ngSwitch]="view"  class="calendarClass">
+    <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    (columnHeaderClicked)="clickedColumn = $event.isoDayNumber"
+    (dayClicked)="clickedDate = $event.day.date"
+    (dayClicked) = "wasClicked()"
+    >
+</mwl-calendar-month-view>
+</div>
+</div>
+<div class="submitDiv">
+    <button class="submitButton">Search Flights!</button>
+</div>

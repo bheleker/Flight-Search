@@ -1,0 +1,35 @@
+
+.navBar{
+    height: 55px;
+    background-image: linear-gradient(rgb(121, 179, 121), rgb(34, 145, 84), rgb(34, 145, 84), rgb(122, 172, 122));
+    width: 100%;
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.425);
+}
+.welcome{
+    height:100%;
+    font-size: 46px;
+    color: rgb(241, 241, 235);
+    background: rgb(0, 34, 128);
+    display: inline-block;
+}
+.searchLink{
+    float:right;
+    margin-top:9px;
+    height:35px;
+    background:rgb(0, 34, 128);
+    border: 0px;
+    color: white;
+    margin-right: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 1px 1px 3px 1px rgba(255, 255, 255, 0.425); 
+
+}
+.background{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+.mainPage{
+    flex: 1 1 auto;
+}

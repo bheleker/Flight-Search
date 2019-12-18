@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CalendarView, CalendarEvent, DateFormatterParams } from 'angular-calendar'
+import { FlightService } from '../flight.service';
 
 @Component({
   selector: 'app-day-main',
@@ -25,11 +26,19 @@ export class DayMainComponent implements OnInit {
   flightTo?: string;
 
   predictList?: string[]; 
-  wasClicked() { this.formattedDate = this.clickedDate.getFullYear() + "-" + this.clickedDate.getMonth() + "-" + this.clickedDate.getDate();
+
+  wasClicked() { this.formattedDate = this.clickedDate.getDate() + "/" + this.clickedDate.getMonth() + "/" + this.clickedDate.getFullYear();
 }
 
-  constructor() {}
+  constructor(private flightService: FlightService) {}
   
+  getFlight(from:string = this.flightFrom, day:string = this.formattedDate, to?:string){
+    if(this.flightTo){
+        to = this.flightTo
+    }
+    this.flightService.getFlights(from, day, to).subscribe(data => console.log(data));
+  }
+
   ngOnInit() {}
 
 }

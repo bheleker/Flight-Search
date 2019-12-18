@@ -15,6 +15,7 @@ import { CalendarModule, DateAdapter, CalendarNativeDateFormatter, DateFormatter
 import { adapterFactory } from '../../node_modules/angular-calendar/date-adapters/date-fns/index.js';
 import { CommonModule } from '@angular/common';
 import { CalendarHeaderComponent } from './calendar-utils/calendar-header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 class CustomDateFormatter extends CalendarNativeDateFormatter {
   public monthViewColumnHeader({date, locale="en"}: DateFormatterParams): string{
@@ -46,7 +47,7 @@ class CustomDateFormatter extends CalendarNativeDateFormatter {
       provide: DateAdapter,
       useFactory:adapterFactory
     }),
-
+    HttpClientModule
   ],
   providers: [CalendarEventTitleFormatter,
   {

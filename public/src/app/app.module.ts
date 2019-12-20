@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { CalendarHeaderComponent } from './calendar-utils/calendar-header.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
 class CustomDateFormatter extends CalendarNativeDateFormatter {
   public monthViewColumnHeader({date, locale="en"}: DateFormatterParams): string{
       return new Intl.DateTimeFormat(locale, {weekday: 'short'}).format(date).substr(0, 1);
@@ -47,7 +48,7 @@ class CustomDateFormatter extends CalendarNativeDateFormatter {
       provide: DateAdapter,
       useFactory:adapterFactory
     }),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [CalendarEventTitleFormatter,
   {

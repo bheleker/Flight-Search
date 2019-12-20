@@ -6,11 +6,15 @@
     box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.425);
 }
 .welcome{
-    height:100%;
+    height:55px;
     font-size: 46px;
     color: rgb(241, 241, 235);
-    background: rgb(0, 34, 128);
+    background: limegreen;
     display: inline-block;
+    width: 33.35%;
+    min-width: 240px;
+    max-width: 500px;
+
 }
 .searchLink{
     float:right;
@@ -32,4 +36,9 @@
 }
 .mainPage{
     flex: 1 1 auto;
+    height:auto;
+}
+.c{
+    display: inline-block;
+    font-size:8px;
 }

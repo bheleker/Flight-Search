@@ -1,21 +1,21 @@
+<div class="evenMoreContained">
 <div class="container">
     <h3 class="dateSelect">Flight From:</h3>
     <form>
         <input name="flightFrom" type="text" [(ngModel)]="flightFrom">
     </form>
-    <h3 class="dateSelect">Flight To:</h3>
+    <h3 class="dateSelect">Flight To(optional):</h3>
     <form>
         <input name="flightTo" type="text" [(ngModel)]="flightTo">
+    </form>
+    <h3 class="dateSelect">Maximum Price(optional):</h3>
+    <form>
+        <input name="maxPrice" type="text" [(ngModel)]="maxPrice">
     </form>
     <h3 class="dateSelect">Select a date:</h3>
 
 <calendar-header [(view)]="view" [(viewDate)]="viewDate">
 </calendar-header>
-
-<div class="alert alert-info">
-    <strong *ngIf="clickedDate"
-    >You clicked on this time: {{ clickedDate | date:'medium' }}</strong>
-</div>
 
 <div [ngSwitch]="view"  class="calendarClass">
     <mwl-calendar-month-view
@@ -28,9 +28,13 @@
     >
 </mwl-calendar-month-view>
 </div>
-</div>
-{{formattedDate}} {{flightFrom}} -> {{flightTo}}
 <div class="submitDiv">
     <button class="submitButton" (click)="getFlight()">Search Flights!</button>
 </div>
-<
+</div>
+<div class="flightDiv">
+    <div class="flightsAvailable" *ngFor="let f of dayFlights">
+        <div class="topRow"><img class="airlineImage" src="{{f.airline}}"><p class="flexText">duration: {{f.duration}}</p> <p class="flexText">${{f.price}}</p></div>
+    </div>
+</div>
+</div>

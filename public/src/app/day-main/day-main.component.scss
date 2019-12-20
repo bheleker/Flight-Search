@@ -67,8 +67,8 @@
 .dateSelect{
     align-self: flex-start;
     margin-left:17px;
-    margin-bottom:16px;
-    margin-top:16px;
+    margin-bottom:13px;
+    margin-top:13px;
 }
 .submitDiv{
     width: 100%;
@@ -105,4 +105,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.selections{
+    display: inline-block;
+    border-left:1px solid rgba(0, 0, 0, 0.479);
+    border-right:1px solid rgba(0, 0, 0, 0.479);
+    margin-right: 3px;
+    padding-left: 2px;
+    padding-right:2px;
+}
+.theParams{
+    height:50px;
+    margin-bottom:-20px;
+    margin-top:-10px;
 }

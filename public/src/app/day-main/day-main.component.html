@@ -28,6 +28,8 @@
     >
 </mwl-calendar-month-view>
 </div>
+<div *ngIf="questionMarked == true"> <div class="theParams"><p class="selections" *ngIf="flightFrom != null">from {{flightFrom}}</p> <p class="selections" *ngIf="flightTo != null"> to {{flightTo}}</p><p class="selections" *ngIf="clickedDate != null"> on {{ clickedDate| date:'MMM d, y'}} </p><p class="selections" *ngIf="maxPrice != null"> for under ${{maxPrice}}</p></div></div>
+<div *ngIf="topBar"><div class="theParams"><p class="selections">{{topBar}}</p></div></div>
 <div class="submitDiv">
     <button class="submitButton" (click)="getFlight()">Search Flights!</button>
 </div>

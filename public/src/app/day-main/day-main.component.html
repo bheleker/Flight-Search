@@ -33,8 +33,11 @@
 </div>
 </div>
 <div class="flightDiv">
+    <div class="overflowDiv">
     <div class="flightsAvailable" *ngFor="let f of dayFlights">
-        <div class="topRow"><img class="airlineImage" src="{{f.airline}}"><p class="flexText">duration: {{f.duration}}</p> <p class="flexText">${{f.price}}</p></div>
+        <div class="topRow"><img class="airlineImage" src="{{f.airline}}"><p class="flexText">duration: {{f.duration}}</p> <p class="flexText">${{f.price}}</p><div class="timeBlock"><p class="flexText">Departure: {{ f.departure * 1000 | date:'MMM d, y h:mm a'}}</p> <p class="flexText">Arrival: {{ f.arrival * 1000 | date:'MMM d, y h:mm a'}}</p> </div>
+    </div>
+    </div>
     </div>
 </div>
 </div>

@@ -1,7 +1,7 @@
 
 .navBar{
     height: 55px;
-    background-image: linear-gradient(rgb(121, 179, 121), rgb(34, 145, 84), rgb(34, 145, 84), rgb(122, 172, 122));
+    background: blue;
     width: 100%;
     box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.425);
 }
@@ -9,7 +9,6 @@
     height:55px;
     font-size: 46px;
     color: rgb(241, 241, 235);
-    background: limegreen;
     display: inline-block;
     width: 33.35%;
     min-width: 240px;
@@ -37,6 +36,11 @@
 .mainPage{
     flex: 1 1 auto;
     height:auto;
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 .c{
     display: inline-block;

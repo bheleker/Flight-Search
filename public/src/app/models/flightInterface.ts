@@ -7,4 +7,6 @@ export class Flight{
     cityTo: string;
     duration: string;
     price: number;
+    departure: string;
+    arrival: string;
 }

@@ -1,10 +1,11 @@
 .evenMoreContained{
     display: flex;
-
+    height:100%;
+    overflow: hidden;
 }
 .container{
     width:40%;
-    max-width:500px;
+    max-width:325px;
     min-width:240px;
     flex-direction: column;
     align-items: center;
@@ -57,8 +58,8 @@
     margin-top: 15px;
     font-size: 14px;
     width: 100%;
-    border:1px solid green;
-    background: greenyellow;
+    border:1px solid blue;
+    background: lightblue;
     border-radius: 7px;
     height: 25px;
     max-width:200px;
@@ -66,12 +67,15 @@
 .dateSelect{
     align-self: flex-start;
     margin-left:17px;
+    margin-bottom:16px;
+    margin-top:16px;
 }
 .submitDiv{
     width: 100%;
 }
 .flightDiv{
     width:100%;
+    overflow: scroll;
 }
 .airlineImage{
     max-width:100px;
@@ -79,7 +83,7 @@
     background: white;
 }
 .flightsAvailable{
-    height:150px;
+    height:100px;
     border:1px solid black;
     display: flex;
     flex-direction: row;
@@ -89,9 +93,16 @@
 }
 .topRow{
     width:100%;
+    display: flex;
+    justify-content: space-between;
 }
 .flexText{
     display:inline-block;
     font-weight:bold;
     font-size: 16px;
+}
+.timeBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

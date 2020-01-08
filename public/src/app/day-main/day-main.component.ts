@@ -20,7 +20,9 @@ export class DayMainComponent implements OnInit {
 
   clickedColumn: number;
   
-  formattedDate: string; 
+  formattedDateOne: string; 
+
+  formattedDateTwo: string;
 
   flightFrom: string;
 
@@ -36,44 +38,50 @@ export class DayMainComponent implements OnInit {
 
   topBar : string;
 
-  wasClicked() { this.formattedDate = this.clickedDate.getDate() + "/" + this.clickedDate.getMonth() + "/" + this.clickedDate.getFullYear();
+  dateWasClicked: boolean = false;
+
+  secondDateWasClicked: boolean = false;
+
+  dateFrom : Date;
+
+  dateTo : Date;
+
+  wasSubmitted: string = "#f1f1eb";
+
+  borderOnSubmit: string = "none"
+
+  wasClicked() { 
+    if(this.dateWasClicked === false){
+    this.formattedDateOne = this.clickedDate.getDate() + "/" + this.clickedDate.getMonth() + 1 + "/" + this.clickedDate.getFullYear();
+    this.dateWasClicked = true;
+    this.dateFrom = this.clickedDate;
+    }
+    else if(this.dateWasClicked === true && this.secondDateWasClicked === false){
+      this.formattedDateTwo = this.clickedDate.getDate() + "/" + this.clickedDate.getMonth() + 1 + "/" + this.clickedDate.getFullYear();
+      this.secondDateWasClicked = true;
+      this.dateTo = this.clickedDate;
+    }
+    else{
+      this.formattedDateOne = this.clickedDate.getDate() + "/" + this.clickedDate.getMonth() + 1 + "/" + this.clickedDate.getFullYear();
+      this.formattedDateTwo = '';
+      this.dateFrom = this.clickedDate;
+      this.dateTo = null;
+      this.secondDateWasClicked = false;
+    }
 }
 
   constructor(private flightService: FlightService) {}
   
-  getFlight(from:string = this.flightFrom, day:string = this.formattedDate, to?:string, price?:number){
+  getFlight(from:string = this.flightFrom, day:string = this.formattedDateOne, dayTo:string = this.formattedDateTwo, to?:string, price?:number){
     this.dayFlights = [];
     this.questionMarked = false;
-    this.topBar = 'from ' + this.flightFrom;
-    if(this.flightTo && this.formattedDate && this.maxPrice){
-    this.topBar = this.topBar + ' to ' + this.flightTo + '  on ' + this.formattedDate + ' for less than $' + this.maxPrice;
-    }
-    if(this.formattedDate && this.maxPrice && !this.flightTo){
-    this.topBar = this.topBar + ' on ' + this.formattedDate + ' for less than $' + this.maxPrice;
-    }
-    if(!this.formattedDate && this.maxPrice && this.flightTo){
-    this.topBar = this.topBar + ' to ' + this.flightTo + ' for less than $' + this.maxPrice;
-    }
-    if(this.formattedDate && !this.maxPrice && this.flightTo){
-    this.topBar = this.topBar + ' to ' + this.flightTo + ' on ' + this.formattedDate;
-    }
-    if(!this.formattedDate && !this.maxPrice && this.flightTo){
-    this.topBar = this.topBar + ' to ' + this.flightTo;
-    }
-    if(!this.formattedDate && this.maxPrice && !this.flightTo){
-    this.topBar = this.topBar + ' for less than $' + this.maxPrice;
-    }
-    if(this.formattedDate && !this.maxPrice && !this.flightTo){
-    this.topBar = this.topBar + ' on ' + this.formattedDate;
-    }
     if(this.flightTo){
       to = this.flightTo
     }
     if(this.maxPrice){
       price = this.maxPrice;
     }
-    console.log(price+ ' a111111111a ' + to );
-    this.flightService.getFlights(from, day, to, price).subscribe(data => {
+    this.flightService.getFlights(from, day, to, price, dayTo).subscribe(data => {
       for(let x of data['data']){
         if(Number(x['availability']['seats'])){
           let newFlight = new Flight();
@@ -84,6 +92,7 @@ export class DayMainComponent implements OnInit {
           newFlight.arrival=x['aTime'];
           newFlight.departure=x['dTime'];
           newFlight.cityFrom = x['cityFrom'];
+          newFlight.flightID = x['id'];
           if(x['airlines'][0] == "DL"){
             newFlight.airline = "data:image/png;base64,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"
           }
@@ -124,16 +133,19 @@ export class DayMainComponent implements OnInit {
             newFlight.airline="data:image/png;base64,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"
           }
           newFlight.cityTo = x['cityTo'];
-          newFlight.duration = x['fly_duration']
+          let flightLink: string = x['deep_link'];
+          newFlight.flightLink = flightLink.replace(/EUR/g, "USD");
+          newFlight.duration = x['fly_duration'];
           newFlight.price = Math.floor(Number(x['price'])*1.11);
           this.dayFlights.push(newFlight);
         }
       }
-      console.log(this.dayFlights);})
-      console.log(this.topBar)
+      this.borderOnSubmit ="1px solid black"
+      this.wasSubmitted = "white"
+      console.log(this.dayFlights[0]);})
       return this.dayFlights;
     }
-    
+  
   ngOnInit() {}
 
 }

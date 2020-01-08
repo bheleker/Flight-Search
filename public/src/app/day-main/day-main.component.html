@@ -28,18 +28,12 @@
     >
 </mwl-calendar-month-view>
 </div>
-<div *ngIf="questionMarked == true"> <div class="theParams"><p class="selections" *ngIf="flightFrom != null">from {{flightFrom}}</p> <p class="selections" *ngIf="flightTo != null"> to {{flightTo}}</p><p class="selections" *ngIf="clickedDate != null"> on {{ clickedDate| date:'MMM d, y'}} </p><p class="selections" *ngIf="maxPrice != null"> for under ${{maxPrice}}</p></div></div>
-<div *ngIf="topBar"><div class="theParams"><p class="selections">{{topBar}}</p></div></div>
 <div class="submitDiv">
     <button class="submitButton" (click)="getFlight()">Search Flights!</button>
 </div>
 </div>
 <div class="flightDiv">
-    <div class="overflowDiv">
-    <div class="flightsAvailable" *ngFor="let f of dayFlights">
-        <div class="topRow"><img class="airlineImage" src="{{f.airline}}"><p class="flexText">duration: {{f.duration}}</p> <p class="flexText">${{f.price}}</p><div class="timeBlock"><p class="flexText">Departure: {{ f.departure * 1000 | date:'MMM d, y h:mm a'}}</p> <p class="flexText">Arrival: {{ f.arrival * 1000 | date:'MMM d, y h:mm a'}}</p> </div>
-    </div>
-    </div>
-    </div>
+        <div> <div class="theParams"  [style.background]="wasSubmitted" [style.border]="borderOnSubmit"><p class="selections" *ngIf="flightFrom != null">From {{flightFrom}}</p> <p class="selections" *ngIf="flightTo != null"> to {{flightTo}}</p><p class="selections" *ngIf="dateFrom != null"> available on {{ dateFrom | date:'MMM d, y'}} </p><p class="selections" *ngIf="dateTo != null"> to {{ dateTo | date:'MMM d, y'}} </p><p class="selections" *ngIf="maxPrice != null"> for under ${{maxPrice}}</p></div></div>
+        <app-flight-page [flights]="dayFlights"></app-flight-page>
 </div>
 </div>

@@ -9,4 +9,6 @@ export class Flight{
     price: number;
     departure: string;
     arrival: string;
+    flightLink: string;
+    flightID: string;
 }

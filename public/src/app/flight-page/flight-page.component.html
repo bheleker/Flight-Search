@@ -1,1 +1,12 @@
-This is working at the moment flights page
+    <div class="overflowDiv">
+        <div class="flightsAvailable" *ngFor="let f of Flights">
+            <div class="topRow"><img class="airlineImage" src="{{f.airline}}"><p class="flexText">duration: {{f.duration}}</p> <p class="flexText">${{f.price}}</p><div class="timeBlock"><p class="flexText">Departure: {{ f.departure * 1000 | date:'MMM d, y h:mm a'}}</p> <p class="flexText">Arrival: {{ f.arrival * 1000 | date:'MMM d, y h:mm a'}}</p></div>
+        </div>
+        <div class="bottomRow">
+            <a class=flexText href="{{f.flightLink}}" target="_blank">Book This Flight! </a>
+            <p *ngIf="selectedFlight.flightID != f.flightID" (click)="selectFlight(f)">More Details</p>
+            <p *ngIf="selectedFlight.flightID == f.flightID" (click)="deselectFlight()">Less Details</p>
+        </div>
+        <div *ngIf="selectedFlight.flightID == f.flightID" class="flightDetails">This is the one I chose</div>
+    </div>
+    </div>

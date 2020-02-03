@@ -139,13 +139,9 @@ export class DayMainComponent implements OnInit {
           for(let route of x['route']){
             let newRoute = new Route();
             newRoute.arrival = route['aTimeUTC'];
-            console.log(newRoute.arrival);
             newRoute.departure = route['dTimeUTC'];
-            console.log(newRoute.departure);
             newRoute.from = route['cityFrom'];
-            console.log(newRoute.from);
             newRoute.to = route['cityTo'];
-            console.log(newRoute.to);
             newFlight.routes.push(newRoute);
           }
           let flightLink: string = x['deep_link'];

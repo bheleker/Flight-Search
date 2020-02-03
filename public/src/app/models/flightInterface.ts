@@ -1,3 +1,5 @@
+import {Route} from './routeInterface'
+
 export class Flight{
     airline: string;
     availability: number;
@@ -11,4 +13,5 @@ export class Flight{
     arrival: string;
     flightLink: string;
     flightID: string;
+    routes: Route[];
 }

@@ -1,12 +1,33 @@
     <div class="overflowDiv">
         <div class="flightsAvailable" *ngFor="let f of Flights">
-            <div class="topRow"><img class="airlineImage" src="{{f.airline}}"><p class="flexText">duration: {{f.duration}}</p> <p class="flexText">${{f.price}}</p><div class="timeBlock"><p class="flexText">Departure: {{ f.departure * 1000 | date:'MMM d, y h:mm a'}}</p> <p class="flexText">Arrival: {{ f.arrival * 1000 | date:'MMM d, y h:mm a'}}</p></div>
+            <div class="topRow"><div class="imageContainer"><img class="airlineImage" src="{{f.airline}}"></div><div class="flexText"><p class="flexText">duration: {{f.duration}}</p><p class="flexText"># of layovers: {{f.routes.length - 1}}</p></div> <p class="flexText">${{f.price}}</p><div class="timeBlock"><p class="flexText">Departure: {{ f.departure * 1000 | date:'MMM d, y h:mm a'}}</p> <p class="flexText">Arrival: {{ f.arrival * 1000 | date:'MMM d, y h:mm a'}}</p></div>
         </div>
         <div class="bottomRow">
-            <a class=flexText href="{{f.flightLink}}" target="_blank">Book This Flight! </a>
+            <a class="flexText bottom" href="{{f.flightLink}}" target="_blank">Book This Flight! </a>
+            <div *ngIf="f.routes.length > 1">
             <p *ngIf="selectedFlight.flightID != f.flightID" (click)="selectFlight(f)">More Details</p>
             <p *ngIf="selectedFlight.flightID == f.flightID" (click)="deselectFlight()">Less Details</p>
+            </div>
         </div>
-        <div *ngIf="selectedFlight.flightID == f.flightID" class="flightDetails">This is the one I chose</div>
+        <div *ngIf="selectedFlight.flightID == f.flightID" class="flightDetails">
+            <table>
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let route of selectedFlight.routes">
+                        <td>{{route.from}}</td>
+                        <td>{{route.to}}</td>
+                        <td>{{ route.departure * 1000 | date:'MMM d, y h:mm a'}}</td>
+                        <td>{{ route.arrival * 1000 | date:'MMM d, y h:mm a'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     </div>

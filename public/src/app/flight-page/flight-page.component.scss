@@ -7,11 +7,15 @@
     width:100%;
     display: flex;
     justify-content: space-between;
+    height:35px;
 }
 .flexText{
-    display:inline-block;
+    display:block;
     font-weight:bold;
     font-size: 16px;
+}
+.bottom {
+    margin-top:15px;
 }
 .timeBlock{
     display: flex;
@@ -35,5 +39,26 @@
     text-align: left;
 }
 .flightDetails{
-    height: 200px;
+    height: fit-content;
+    border-top: 1px solid black;
+    width: 100%;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr{
+    height: 25px;
+}
+.imageContainer{
+    height: 60px;
+    width: 100px;
 }

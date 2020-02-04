@@ -25,7 +25,7 @@ export class DayMainComponent implements OnInit {
 
   formattedDateTwo: string;
 
-  flightFrom: string;
+  flightFrom: string = "SEA";
 
   flightTo?: string;
 

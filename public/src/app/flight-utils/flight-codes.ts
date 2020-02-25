@@ -1,4 +1,4 @@
-[
+export const airportDetails  = [
   {
     "code": "AAA",
     "lat": "-17.3595",

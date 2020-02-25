@@ -3,6 +3,7 @@ import { CalendarView, CalendarEvent, DateFormatterParams } from 'angular-calend
 import { FlightService } from '../flight.service';
 import { Flight } from '../models/flightInterface';
 import { Route } from '../models/routeInterface'; 
+import { airportDetails }  from '../flight-utils/flight-codes'
 
 @Component({
   selector: 'app-day-main',
